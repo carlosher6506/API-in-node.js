@@ -1,24 +1,22 @@
-const { Console } = require('console');
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 const courseRoutes = require('./routes/course');
+const studentRoutes = require('./routes/student');
+const db = require('./controllers/database');
 
 //midelware
 app.use(express.json());
 app.use('/api', courseRoutes);
-
+app.use('/api', studentRoutes);
 
 //routes
 app.get('/', (req, res) =>{
     res.send('Welcome to my API');
 });
 
-mongoose.connect(
-process.env.MONGODB_URI
-).then(()=> console.log('Connected to MongoDB'))
-.catch((error=> console.error(error)));
+db();
 
 app.listen(port,()=> console.log('Server listening on port', port));

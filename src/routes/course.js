@@ -40,7 +40,7 @@ router.put('/course/:id', (req, res) =>{
 //delete one courses
 router.delete('/course/:id', (req, res) =>{
     const {id} = req.params;
-    courseSchema.deleteOne({_id: id})
+    courseSchema.deleteOne3({_id: id})
     .then((data)=>res.json(data))
     .catch(()=> res.json({message: error}));
 });
