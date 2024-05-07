@@ -2,26 +2,26 @@ const express = require('express');
 const teacherSchema = require('../models/teacher');
 
 //constructor que enruta 
-const router = express.Router();
+const routerTeacher = express.Router();
 
 
 //create teacher
-router.post('/teacher', (req, res) =>{
-    const teacher = teacherSchema(req.body);
-    teacher.save()
+routerTeacher.post('/teacher', (req, res) =>{
+    const teachers = teacherSchema(req.body);
+    teachers.save()
     .then((data)=>res.json(data))
     .catch(()=> res.json({message: error}));
 });
 
 //get all teacher
-router.get('/teacher', (req, res) =>{
+routerTeacher.get('/teacher', (req, res) =>{
     teacherSchema.find()
     .then((data)=>res.json(data))
     .catch(()=> res.json({message: error}));
 });
 
 //get one teacher
-router.get('/teacher/:id', (req, res) =>{
+routerTeacher.get('/teacher/:id', (req, res) =>{
     const {id} = req.params;
     teacherSchema.findById(id)
     .then((data)=>res.json(data))
@@ -29,7 +29,7 @@ router.get('/teacher/:id', (req, res) =>{
 });
 
 //update one teacher
-router.put('/teacher/:id', (req, res) =>{
+routerTeacher.put('/teacher/:id', (req, res) =>{
     const {id} = req.params;
     const {firstName, lastName, age} = req.body;
     teacherSchema.updateOne({_id: id},{$set:{firstName, lastName, age}})
@@ -38,11 +38,11 @@ router.put('/teacher/:id', (req, res) =>{
 });
 
 //delete one teacher
-router.delete('/teacher/:id', (req, res) =>{
+routerTeacher.delete('/teacher/:id', (req, res) =>{
     const {id} = req.params;
     teacherSchema.deleteOne({_id: id})
     .then((data)=>res.json(data))
     .catch(()=> res.json({message: error}));
 });
 
-module.exports = router;
+module.exports = routerTeacher;

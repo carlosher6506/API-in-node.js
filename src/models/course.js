@@ -8,6 +8,6 @@ const courseSchema = mongoose.Schema({
     teacher:[{
         type: mongoose.Schema.Types.ObjectId, ref: 'teachers'
     }]
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Course',courseSchema);

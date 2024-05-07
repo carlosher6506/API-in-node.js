@@ -5,12 +5,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 const courseRoutes = require('./routes/course');
 const studentRoutes = require('./routes/student');
+const teacherRoutes = require('./routes/teacher');
 const db = require('./controllers/database');
 
 //midelware
 app.use(express.json());
 app.use('/api', courseRoutes);
 app.use('/api', studentRoutes);
+app.use('/api', teacherRoutes);
 
 //routes
 app.get('/', (req, res) =>{

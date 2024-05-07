@@ -14,6 +14,6 @@ const studentSchema = mongoose.Schema({
         required: true
     },
     courses:[{type: mongoose.Schema.ObjectId, ref: 'courses'}]
-});
+},{ timestamps: true });
 
-module.exports = mongoose.model('Teacher', studentSchema);
+module.exports = mongoose.model('Student', studentSchema);
