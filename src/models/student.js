@@ -13,7 +13,7 @@ const studentSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    courses:[{type: mongoose.Schema.ObjectId, ref: 'courses'}]
-},{ timestamps: true });
+    courses: [{ type: mongoose.Schema.ObjectId, ref: 'course' }]
+}, { timestamps: true });
 
 module.exports = mongoose.model('Student', studentSchema);
